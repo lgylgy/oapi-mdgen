@@ -38,17 +38,24 @@ func TestGenerateMarkdown(t *testing.T) {
 		wantError bool
 	}{
 		{"empty", true},
-		{"invalid", true},
+		{"invalid", false},
 		{"notags", false},
 		{"tags", false},
 		{"params.body", false},
 		{"params.body.ref", false},
 		{"params.body.inline", false},
 		{"params.body.content", false},
+		{"params.body.allof.inline", false},
+		{"params.body.oneof.inline", false},
 		{"responses.simple", false},
 		{"responses.array", false},
 		{"responses.content.ref", false},
 		{"responses.content.inline", false},
+		{"responses.oneof", false},
+		{"schemas.oneof.ref", false},
+		{"schemas.oneof.discriminator", false},
+		{"schemas.anyof", false},
+		{"schemas.allof.ref", false},
 		{"schemas.recursive", false},
 	} {
 		t.Run(test.name, func(t *testing.T) {

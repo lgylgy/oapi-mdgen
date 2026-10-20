@@ -8,7 +8,6 @@ import (
 	"io"
 	"iter"
 	"path/filepath"
-	"slices"
 	"strings"
 	"unicode"
 
@@ -261,14 +260,17 @@ func GenerateMarkdown(input io.Reader, output io.Writer) (err error) {
 	}
 
 	funcMap := template.FuncMap{
-		"dict":      dict,
-		"add":       add,
-		"refName":   refName,
-		"refAnchor": refAnchor,
-		"refID":     refID,
-		"contains":  slices.Contains[[]string, string],
-		"until":     until,
-		"null":      null,
+		"dict":            dict,
+		"add":             add,
+		"refName":         refName,
+		"refAnchor":       refAnchor,
+		"refID":           refID,
+		"until":           until,
+		"null":            null,
+		"effectiveType":   effectiveType,
+		"compositionKind": compositionKind,
+		"variants":        variants,
+		"properties":      properties,
 	}
 
 	// we can now use the v3 model to generate markdown documentation.
