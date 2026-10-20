@@ -49,6 +49,7 @@ func TestGenerateMarkdown(t *testing.T) {
 		{"responses.array", false},
 		{"responses.content.ref", false},
 		{"responses.content.inline", false},
+		{"schemas.recursive", false},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			input, err := os.Open(filepath.Join("testdata", test.name+".yaml"))
